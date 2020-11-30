@@ -47,7 +47,7 @@ export default class App extends React.Component {
       {name: "Astrid", breed:"Corgi", size: "small", activity: "energetic", rate: 18, img: "/images/corgi.jpeg"},
       {name: "Aussie", size: "medium", activity: "high", rate: 17, img: "/images/aussie.jpg"},
       {name: "Lilli", breed: "Entlebucher", size: "medium", activity: "high", rate: 20, img: "/images/lilli.jpeg"},
-      {name: "Cash", breed:"Samoyed", size: "medium", activity: "energetic", rate: 25, img: "/images/samoyed.jpg"},
+      {name: "Cash", breed:"Samoyed", size: "medium", activity: "energetic", rate: 25, img: "/images/cash.png"},
       {name: "Garry", breed: "German Shepherd", size: "large", activity: "regular", rate: 18, img: "/images/germanShepherd.jpg"},
       {name: "Baker", breed: "Golden Retriever", size: "large", activity: "high", rate: 23, img: "/images/goldenRetriever.jpeg"},
       {name: "Rocky", breed: "Rottweiler", size: "large", activity: "regular", rate: 21, img: "/images/rottweiler.jpg"},
