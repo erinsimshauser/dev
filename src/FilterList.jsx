@@ -63,7 +63,8 @@ export default class FilterList extends React.Component {
     render() {
         return (
             <Container>
-                <Container>
+                <Container style={{ backgroundColor: '#F8F9FA' }}>
+                    <h3 style={{paddingLeft: '2%', paddingTop: '5%' }}>Dogs Available to Walk</h3>
                     <Navbar bg="light" variant="light">
                         <Navbar.Brand>Size:</Navbar.Brand>
                         <Nav className="mr-auto">
@@ -74,7 +75,7 @@ export default class FilterList extends React.Component {
                         </Nav>
                     </Navbar>
                 </Container>
-                <Container>
+                <Container style={{ backgroundColor: '#F8F9FA' }}>
                     <Navbar bg="light" variant="light">
                         <Navbar.Brand>Activity Level:</Navbar.Brand>
                         <Nav className="mr-auto">
@@ -85,7 +86,7 @@ export default class FilterList extends React.Component {
                         </Nav>
                     </Navbar>
                 </Container>
-                <Container>
+                <Container style={{ backgroundColor: '#F8F9FA' }}>
                     <Navbar bg="light" variant="light">
                         <Navbar.Brand>Sort by Rate:</Navbar.Brand>
                         <Nav className="mr-auto">
@@ -95,7 +96,7 @@ export default class FilterList extends React.Component {
                     </Navbar>
                 </Container>
                 <div>
-                    <DisplayList list={this.props.list.filter(this.matchesFilterSize).filter(this.matchesFilterActivity).sort(this.matchesSortFilter)} add={this.props.add}/>
+                    <DisplayList list={this.props.list.filter(this.matchesFilterSize).filter(this.matchesFilterActivity).sort(this.matchesSortFilter)} add={this.props.add} />
                 </div>
             </Container>
         );
