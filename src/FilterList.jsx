@@ -3,6 +3,8 @@ import Container from 'react-bootstrap/Container';
 import DisplayList from './DisplayList.jsx';
 import Navbar from 'react-bootstrap/Navbar'
 import { Nav } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import FilterButtons from './FilterButtons.jsx';
 
 
 export default class FilterList extends React.Component {
@@ -13,8 +15,21 @@ export default class FilterList extends React.Component {
         this.state = {
             size: "All",
             activity: "All",
-            sort: ""
+            sort: "default"
         };
+    }
+
+    original = () => {
+        this.setState({
+            size: "All"
+        })
+        this.setState({
+            activity: "All"
+        })
+        this.setState({
+            sort: "default"
+        })
+
     }
 
     //function that takes in an eventKey and updates the size state to reflect it
@@ -69,6 +84,8 @@ export default class FilterList extends React.Component {
             return b.rate - a.rate
         } else if (this.state.sort === "ascend") {
             return a.rate - b.rate
+        } else if (this.state.sort === "default"){
+            return 0
         }
     }
 
@@ -76,10 +93,11 @@ export default class FilterList extends React.Component {
         return (
             <Container style={{paddingLeft: '0'}}>
                 <Container style={{ backgroundColor: '#F8F9FA' }}>
+                <Container style={{ backgroundColor: '#F8F9FA' }}>
                     <h3 style={{paddingLeft: '2%', paddingTop: '5%' }}>Dogs Available to Walk</h3>
-                    <Navbar bg="light" variant="light">
+                    <Navbar variant="light" bg="light">
                         <Navbar.Brand>Size:</Navbar.Brand>
-                        <Nav className="mr-auto">
+                        <Nav activeKey={this.state.size} className="mr-auto">
                             <Nav.Item><Nav.Link eventKey="All" onSelect={this.onSelectFilterSize}>All</Nav.Link></Nav.Item>
                             <Nav.Item><Nav.Link eventKey="small" onSelect={this.onSelectFilterSize}>Small</Nav.Link></Nav.Item>
                             <Nav.Item><Nav.Link eventKey="medium" onSelect={this.onSelectFilterSize}>Medium</Nav.Link></Nav.Item>
@@ -90,7 +108,7 @@ export default class FilterList extends React.Component {
                 <Container style={{ backgroundColor: '#F8F9FA' }}>
                     <Navbar bg="light" variant="light">
                         <Navbar.Brand>Activity Level:</Navbar.Brand>
-                        <Nav className="mr-auto">
+                        <Nav activeKey={this.state.activity} className="mr-auto">
                             <Nav.Item><Nav.Link eventKey="All" onSelect={this.onSelectFilterActivity}>All</Nav.Link></Nav.Item>
                             <Nav.Item><Nav.Link eventKey="regular" onSelect={this.onSelectFilterActivity}>Regular</Nav.Link></Nav.Item>
                             <Nav.Item><Nav.Link eventKey="energetic" onSelect={this.onSelectFilterActivity}>Energetic</Nav.Link></Nav.Item>
@@ -101,12 +119,16 @@ export default class FilterList extends React.Component {
                 <Container style={{ backgroundColor: '#F8F9FA' }}>
                     <Navbar bg="light" variant="light">
                         <Navbar.Brand>Sort by Rate:</Navbar.Brand>
-                        <Nav className="mr-auto">
+                        <Nav activeKey={this.state.sort} className="mr-auto">
                             <Nav.Item><Nav.Link eventKey="descend" onSelect={this.onSelectSort}>Highest to Lowest</Nav.Link></Nav.Item>
                             <Nav.Item><Nav.Link eventKey="ascend" onSelect={this.onSelectSort}>Lowest to Highest</Nav.Link></Nav.Item>
                         </Nav>
                     </Navbar>
                 </Container>
+                <Container style={{paddingLeft: '5%', paddingBottom: '2%'}}>
+                    <Button variant="dark" onClick={() => this.original()}>Clear all filters/sorting</Button>
+                </Container>
+            </Container>
                 <div>
                     <DisplayList list={this.props.list.filter(this.matchesFilterSize).filter(this.matchesFilterActivity).sort(this.matchesSortFilter)} add={this.props.add} />
                 </div>
