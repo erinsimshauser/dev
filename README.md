@@ -1,70 +1,22 @@
-# Getting Started with Create React App
+# Organization
+- **App.jsx**: the main app that contains different components. Contains the data for the cards, keeps track of items added and removed from the walk schedule, and functions for adding/removing from the walk schedule.
+- **FilterList.jx**: contains functions for filtering and sorting through the dog cards, nav bars for selecting filters and sorting, and then passes the filtered list to display list
+- **DisplayList.jsx**: handles the UI/visual aspect of displaying the cards on the website. I used react-bootstrap to create cards for each dog and display them in a grid. Each card also has an add button which is a callback function to App.jsx
+- **Aggregator.jsx**: displays the items that have been added to the walk schedule. Displays a remove button so users can remove dogs from their schedule and displays the total amount of money
+users would make per hour.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Data pathways
+- **App**:
+    - passes the list of dog data and the add function to FilterList
+    - passes the list of dogs in the schedule, the total rate, and the remove function to Aggregator
+- **FilterList**:
+    - passes the filtered list and the add function to DisplayList
+- **DisplayList + Aggregator**: display the data passed in
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# How user interactions can trigger changes in the state of components
+- Filtering: state keeps track of current size, activity, and sort filter
+    - Filter buttons: trigger change in size or activity, displayed list will update accordingly
+    - Sorting buttons: trigger change in sort state and will list items in ascending or descending order
+- Walk Schedule: state keeps track of items in the walk schedule and total rate
+    - Add: triggers state change by adding selected dog to the walk schedule, also triggers a change in the total rate by adding the selected dog's rate to the total
+    - Remove: triggers state change by removing selected dog from the walk schedule, also triggers a change in the total rate by subtracting the selected dog's rate from the total

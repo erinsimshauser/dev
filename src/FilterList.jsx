@@ -7,25 +7,33 @@ import { Nav } from 'react-bootstrap';
 
 export default class FilterList extends React.Component {
     constructor(props) {
+        //state keeps track of the selected size, activity, and sort filter
+        //size and activity initialized to All so all cards displayed on opening
         super(props);
         this.state = {
             size: "All",
             activity: "All",
+            sort: ""
         };
     }
 
+    //function that takes in an eventKey and updates the size state to reflect it
     onSelectFilterSize = event => {
         this.setState({
             size: event
         })
     };
 
+    //same as above function but for activity
+    //function that takes in an eventKey and updates the activity state to reflect it
     onSelectFilterActivity = event => {
         this.setState({
             activity: event
         })
     };
 
+    //function that will be passed into the javascript filter function
+    //will include item if All or the item's size matches the current state
     matchesFilterSize = item => {
         if (this.state.size === "All") {
             return true
@@ -36,6 +44,7 @@ export default class FilterList extends React.Component {
         }
     };
 
+    //same as above, but for the item's activity
     matchesFilterActivity = item => {
         if (this.state.activity === "All") {
             return true
@@ -46,12 +55,15 @@ export default class FilterList extends React.Component {
         }
     }
 
+    //function that updates the state based on an eventKey
     onSelectSort = event => {
         this.setState({
             sort: event
         })
     }
 
+    //function that will be passed into the javascript sort filter
+    //compares item rates depending on the current state
     matchesSortFilter = (a, b) => {
         if (this.state.sort === "descend") {
             return b.rate - a.rate
@@ -62,7 +74,7 @@ export default class FilterList extends React.Component {
 
     render() {
         return (
-            <Container>
+            <Container style={{paddingLeft: '0'}}>
                 <Container style={{ backgroundColor: '#F8F9FA' }}>
                     <h3 style={{paddingLeft: '2%', paddingTop: '5%' }}>Dogs Available to Walk</h3>
                     <Navbar bg="light" variant="light">

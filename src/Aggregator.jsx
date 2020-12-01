@@ -1,13 +1,14 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 
 
 export default class Aggregator extends React.Component {
     render() {
-        console.log(this.props.items)
+        //displays the items as Cards in a single column --> based on the list passed in, must access using props
+        //displays the total rate --> based on the total passed in
+        //includes a remove button which on press triggers the callback function to remove item
         return (
             <Container style={{backgroundColor: '#F8F9FA'}}>
                 <h3 style={{paddingBottom: '5%', paddingTop: '10%'}}>Your Walkn Schedule</h3>
