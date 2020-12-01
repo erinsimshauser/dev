@@ -4,8 +4,6 @@ import DisplayList from './DisplayList.jsx';
 import Navbar from 'react-bootstrap/Navbar'
 import { Nav } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-import FilterButtons from './FilterButtons.jsx';
-
 
 export default class FilterList extends React.Component {
     constructor(props) {
